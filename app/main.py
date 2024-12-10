@@ -1,5 +1,4 @@
 from __future__ import annotations
-from typing import Union
 
 
 class Animal:
@@ -27,9 +26,8 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(other: Union[Carnivore, Herbivore]) -> None:
-        if isinstance(other, Herbivore) and other.hidden:
-            return
-        other.health -= 50
-        if other.health <= 0:
-            Animal.alive.pop(Animal.alive.index(other))
+    def bite(other: Animal) -> None:
+        if isinstance(other, Herbivore) and not other.hidden:
+            other.health -= 50
+            if other.health <= 0:
+                Animal.alive.remove(other)
