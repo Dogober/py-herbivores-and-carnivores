@@ -29,9 +29,9 @@ class Carnivore(Animal):
     @staticmethod
     def bite(other: Union[Carnivore, Herbivore]) -> str | None:
         if isinstance(other, Carnivore):
-            return "Carnivore won't bit Carnivore"
+            return
         if isinstance(other, Herbivore) and other.hidden:
-            return "Carnivore won't be able to bite hidden Herbivore"
+            return
         other.health -= 50
         if other.health <= 0:
             Animal.alive.pop(Animal.alive.index(other))
